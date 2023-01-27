@@ -14,13 +14,13 @@ function App() {
       body: mensaje,
       from: "Yo",
     };
-    setMensajes([newMensaje, ...mensajes]);
+    setMensajes([...mensajes, newMensaje]);
     setMensaje("");
   };
 
   useEffect(() => {
     const recibirMensaje = (mensaje) => {
-      setMensajes([mensaje, ...mensajes]);
+      setMensajes([...mensajes, mensaje]);
     };
 
     socket.on("mensaje", recibirMensaje);
@@ -31,19 +31,19 @@ function App() {
   }, [mensajes]);
 
   return (
-    <div className="h-screen bg-zinc-800 text-white flex items-center justify-center">
-      <form onSubmit={handleSubmit} className="bg-zinc-900 p-10">
-      <h1 className="tet-2xl font-bold my-2">Chat Socket.io</h1>
+    <div className="contenedor">
+      <form onSubmit={handleSubmit} className="formulario">
+      <h1 className="titulo">Chat App</h1>
         <input
           type="text"
           onChange={(e) => setMensaje(e.target.value)}
           value={mensaje}
           placeholder="Escriba y pulse Enter para enviar"
-          className="border-2 border-zinc-500 p-2 text-black w-full"
+          className="chat"
         />
-        <ul className="h-80 overflow-y-auto">
+        <ul className="mensajes">
           {mensajes.map((mensaje, index) => (
-            <li key={index} className={`my-2 p-2 table text-sm rounded-md ${mensaje.from === 'Yo' ? "bg-sky-700 nl-auto" : "bg-black"}`}>
+            <li key={index} className={` ${mensaje.from === 'Yo' ? "yo" : "user"}`}>
               <p>
                 {mensaje.from}: {mensaje.body}
               </p>

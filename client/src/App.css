@@ -1,0 +1,46 @@
+.contenedor {
+  min-height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.titulo {
+  text-align: center;
+}
+
+.chat {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  padding: 20px 10px;
+  border: 0;
+  outline: none;
+}
+
+.chat::placeholder {
+  color: #000;
+  font-weight: bold;
+}
+
+.mensajes {
+  margin-top: 15px;
+  padding: 0 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+li{
+  list-style-type: none;
+}
+
+.yo{
+  text-align: right;
+  width: 100%;
+  color: aqua;
+}
+
+.user{
+  text-align: left;
+  width: 100%;
+  color: chartreuse;
+}
